@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+//        $schedule -> exec('touch /vagrant/test/juanLaravel/a.txt') ->everyFiveMinutes();
     }
 
     /**

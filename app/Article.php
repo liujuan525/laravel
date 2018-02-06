@@ -13,7 +13,23 @@ class Article extends Model
 
     protected $fillable = ['title', 'content', 'created_at'];
 
+    /**
+     * 文章关联用户
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this -> belongsTo('App\User');
+    }
 
+    /**
+     * 文章关联分类
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this -> belongsTo('App\Category');
+    }
 
 
 }
