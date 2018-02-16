@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Article as ArticleModel;
-use App\User as UserModel;
+use App\Models\Article as ArticleModel;
+use App\Models\User as UserModel;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
