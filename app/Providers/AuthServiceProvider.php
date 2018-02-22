@@ -15,6 +15,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
+        // 注册用户验证策略类
+        \App\Models\User::class => \App\Policies\UserPolicy::class,
     ];
 
     /**
