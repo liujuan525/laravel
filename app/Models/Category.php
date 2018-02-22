@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     protected $table='category';
-    protected $fillable=['title','type'];
+    protected $fillable=['name', 'description'];
 
     /**
      * 分类关联文章
