@@ -11,6 +11,10 @@ class TopicObserver
 {
     public function saving(Topic $topic)
     {
+        // 防止 XSS 攻击
+        $topic->body = clean($topic->body, 'user_topic_body');
+        
+        // SEO 提取关键字
         $topic->excerpt = make_excerpt($topic->body);
     }
     
