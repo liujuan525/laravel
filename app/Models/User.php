@@ -47,6 +47,14 @@ class User extends Authenticatable
     }
 
     /**
+     * 用户对话题的回复
+     */
+    public function replies()
+    {
+        return $this->hasMany('App\Models\Reply');
+    }
+
+    /**
      * 校验 $model 的user_id 是否是当前登录用户的登录id
      * @param $model
      * @return bool

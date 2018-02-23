@@ -41,3 +41,5 @@ Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show
 // 分类路由
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 
+
+Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]);

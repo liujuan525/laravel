@@ -18,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
         \Carbon\Carbon::setLocale('zh');
         // 注册模型观察器
         \App\Models\Topic::observe(\App\Observers\TopicObserver::class);
+        \App\Models\Reply::observe(\App\Observers\ReplyObserver::class);
     }
 
     /**

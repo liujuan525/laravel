@@ -15,6 +15,12 @@ class Topic extends Model
     {
         return $this -> belongsTo('App\Models\Category');
     }
+
+    public function replies()
+    {
+        return $this->hasMany('App\Models\Reply');
+    }
+
     // 排序
     public function scopeWithOrder($query, $order)
     {
