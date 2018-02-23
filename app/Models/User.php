@@ -37,8 +37,22 @@ class User extends Authenticatable
         return $this -> hasMany('App\Models\Article');
     }
 
+    /**
+     * 用户关联话题
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function topics()
     {
         return $this -> hasMany('App\Models\Topic');
+    }
+
+    /**
+     * 校验 $model 的user_id 是否是当前登录用户的登录id
+     * @param $model
+     * @return bool
+     */
+    public function isAuthorOf($model)
+    {
+        return $this->id == $model->user_id;
     }
 }
