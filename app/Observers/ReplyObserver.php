@@ -25,6 +25,12 @@ class ReplyObserver
         $topic->user->notify(new TopicReplied($reply));
     }
 
+    public function deleted(Reply $reply)
+    {
+        // 话题回复数量减一
+        $reply -> topic -> decrement('reply_count', 1);
+    }
+
     public function updating(Reply $reply)
     {
         //
