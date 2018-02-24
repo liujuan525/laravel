@@ -7,21 +7,33 @@
     "require": {
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
+        // http 请求包
         "guzzlehttp/guzzle": "~6.3",
         "hieu-le/active": "~3.5",
         "laravel/framework": "5.5.*",
+        // 队列图形化管理工具
         "laravel/horizon": "~1.0",
         "laravel/passport": "4.0",
         "laravel/tinker": "~1.0",
+        // 验证码
         "mews/captcha": "~2.0",
         "mews/purifier": "~2.0",
         "overtrue/laravel-lang": "~3.0",
+        // 拼音组件
         "overtrue/pinyin": "~3.0",
+        // redis 服务
         "predis/predis": "^1.1",
+        // 文件存储
         "qiniu/php-sdk": "^7.2",
-        "spatie/laravel-permission": "~2.7"
+        // 权限管理第三方库
+        "spatie/laravel-permission": "~2.7",
+        // 后台库
+        "summerblue/administrator": "~1.1",
+        // 账号切换工具
+        "viacreative/sudo-su": "~1.1"
     },
     "require-dev": {
+        // debugbar 调试工具
         "barryvdh/laravel-debugbar": "~3.1",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
