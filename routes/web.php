@@ -29,7 +29,7 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 // ************************* END *******************************
 
-Route::get('/', 'PagesController@root') -> name('root');
+Route::get('/', 'TopicsController@index') -> name('root');
 
 Route::resource('users', 'UsersController', ['only'=> ['show', 'update', 'edit']]);
 

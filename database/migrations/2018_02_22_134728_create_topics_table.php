@@ -19,6 +19,8 @@ class CreateTopicsTable extends Migration
             $table->integer('order')->unsigned()->default(0);
             $table->text('excerpt');
             $table->string('slug')->nullable();
+            // 当 user_id 对应的 users 表数据被删除时，删除词条
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
 	}

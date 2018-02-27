@@ -24,9 +24,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
-//        $schedule -> exec('touch /vagrant/test/juanLaravel/a.txt') ->everyFiveMinutes();
+        // 一小时执行一次『活跃用户』数据生成的命令
+        $schedule->command('juanLaravel:calculate-active-user')->hourly();
+
+        // 一个小时执行一次用户最后活跃时间
+        $schedule->command('juanLaravel:sync-user-actived-at')->hourly();
     }
 
     /**
