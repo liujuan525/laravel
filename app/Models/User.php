@@ -7,12 +7,11 @@ use App\Models\Traits\LastActivedAtHelper;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens,HasRoles,ActiveUserHelper,LastActivedAtHelper;
+    use HasRoles,ActiveUserHelper,LastActivedAtHelper;
     use Notifiable{
         notify as protected laravelNotify;
     }
