@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bef721f8e0729a4b06c39dd72499aa0b",
-    "content-hash": "0d013ef437bf0e6a70c72c3054556fb8",
+    "hash": "aeab7d415d28885cbc235e69038e9b9d",
+    "content-hash": "31f1a4f0a5ab8b4741a277ca80968b3f",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -1865,6 +1865,49 @@
                 "rest"
             ],
             "time": "2017-06-12 11:04:56"
+        },
+        {
+            "name": "liyu/dingo-serializer-switch",
+            "version": "v0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/liyu001989/dingo-serializer-switch.git",
+                "reference": "82e23a7c9f46f7ec05ae9b5999c618f5c21a3290"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/liyu001989/dingo-serializer-switch/82e23a7c9f46f7ec05ae9b5999c618f5c21a3290.zip",
+                "reference": "82e23a7c9f46f7ec05ae9b5999c618f5c21a3290",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Liyu\\Dingo\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Liyu\\Dingo\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yu Li",
+                    "email": "liyu001989@gmail.com"
+                }
+            ],
+            "description": "A middleware to switch dingo serializer",
+            "time": "2018-01-06 05:09:05"
         },
         {
             "name": "mews/captcha",

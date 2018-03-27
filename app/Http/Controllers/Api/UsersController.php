@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\Api\UserRequest;
 use App\Models\User;
+use App\Transformers\UserTransformer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class UsersController extends Controller
@@ -31,7 +33,13 @@ class UsersController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        return $this->response->created();
+        return $this->response->item($user, new UserTransformer())
+            ->setMeta([
+                'access_token' => Auth::guard('api')->fromUser($user),
+                'token_type' => 'Bearer',
+                'expires_in' => Auth::guard('api')->factory()->getTTL() * 60
+            ])
+            ->setStatusCode(201);
 
     }
 }
