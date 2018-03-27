@@ -46,8 +46,8 @@ $api->version('v1', [
 
     $api -> group([
         'middleware' => 'api.throttle',
-//        'limie'      => config('api.rate_limits.access.limit'),
-//        'expires'      => config('api.rate_limits.access.expires'),
+        'limit'      => config('api.rate_limits.access.limit'),
+        'expires'      => config('api.rate_limits.access.expires'),
     ], function($api){
         // 游客可以访问的接口
 
@@ -58,6 +58,12 @@ $api->version('v1', [
             // 当前用户的登录信息
             $api->get('user', 'UserController@me')
                 ->name('api.user.show');
+            // 图片接口
+            $api->post('images', 'ImagesController@store')
+                ->name('api.images.store');
+            // 编辑登录用户信息
+            $api->patch('user', 'UsersController@update')
+                ->name('api.user.update');
         });
     });
 

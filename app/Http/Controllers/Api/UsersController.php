@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\Api\UserRequest;
+use App\Models\Image;
 use App\Models\User;
 use App\Transformers\UserTransformer;
 use Illuminate\Http\Request;
@@ -41,5 +42,20 @@ class UsersController extends Controller
             ])
             ->setStatusCode(201);
 
+    }
+
+    public function update(UserRequest $request)
+    {
+        $user = $this->user();
+
+        $attributes = $request->only(['name', 'email', 'introduction']);
+
+        if( $request->picture_image_id) {
+            $image = Image::find($request->picture_image_id);
+            $attributes['picture'] = $image->path;
+        }
+
+        $user->update($attributes);
+        return $this->response->item($user, new UserTransformer());
     }
 }
