@@ -52,6 +52,14 @@ $api->version('v1', [
         // 游客可以访问的接口
         $api->get('categories', 'CategoriesController@index')
             ->name('api.categories.index');
+        // 获取话题列表
+        $api->get('topics', 'TopicsController@index')
+            ->name('api.topics.index');
+        $api->get('topics/{topic}', 'TopicsController@show')
+            ->name('api.topics.show');
+        // 查看某个用户发布的帖子
+        $api->get('users/{user}/topics', 'TopicsController@userIndex')
+            ->name('api.users.topics.index');
 
         // 需要 Token 验证的接口
         $api->group([
@@ -62,7 +70,7 @@ $api->version('v1', [
                 ->name('api.user.show');
             // 编辑登录用户信息
             $api->patch('user', 'UsersController@update')
-                ->name('api.user.update'); 
+                ->name('api.user.update');
             // 图片接口
             $api->post('images', 'ImagesController@store')
                 ->name('api.images.store');
@@ -72,6 +80,12 @@ $api->version('v1', [
             // 修改话题
             $api->patch('topics/{topic}', 'TopicsController@update')
                 ->name('api.topics.update');
+            // 删除话题
+            $api->delete('topics/{topic}', 'TopicsController@destory')
+                ->name('api.topics.destory');
+            // 回复话题
+            $api->post('topics/{topic}/replies', 'RepliesController@store')
+                ->name('api.topics.replies.store');
 
         });
     });
