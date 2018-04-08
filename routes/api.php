@@ -16,7 +16,7 @@ $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', [
     'namespace'=> 'App\Http\Controllers\Api',
-    'middleware' => 'serializer:array'
+    'middleware' => ['serializer:array', 'bindings'],
 ], function($api) {
 
     $api -> group([
@@ -60,12 +60,19 @@ $api->version('v1', [
             // 当前用户的登录信息
             $api->get('user', 'UserController@me')
                 ->name('api.user.show');
+            // 编辑登录用户信息
+            $api->patch('user', 'UsersController@update')
+                ->name('api.user.update'); 
             // 图片接口
             $api->post('images', 'ImagesController@store')
                 ->name('api.images.store');
-            // 编辑登录用户信息
-            $api->patch('user', 'UsersController@update')
-                ->name('api.user.update');
+            // 发布话题
+            $api->post('topics', 'TopicsController@store')
+                ->name('api.topics.store');
+            // 修改话题
+            $api->patch('topics/{topic}', 'TopicsController@update')
+                ->name('api.topics.update');
+
         });
     });
 

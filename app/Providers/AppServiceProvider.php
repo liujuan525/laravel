@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Observers\TopicObserver;
+use Dingo\Api\Facade\API;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -31,5 +32,10 @@ class AppServiceProvider extends ServiceProvider
         if (config('app.debug')) {
             $this->app->register(\VIACreative\SudoSu\ServiceProvider::class);
         }
+
+        API::error(function (\Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
+            abort(404);
+        });
+
     }
 }
