@@ -32,7 +32,7 @@
 </div>
 
     @if (config('app.debug'))
-        @include('sudosu::user-selector')
+        {{--@include('sudosu::user-selector')--}}
     @endif
 
     <!-- Scripts -->
