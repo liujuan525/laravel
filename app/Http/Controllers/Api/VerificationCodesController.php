@@ -10,12 +10,13 @@ use Overtrue\EasySms\EasySms;
 
 class VerificationCodesController extends Controller
 {
-    public function store(VerificationCodeRequest $reques, EasySms $easySms)
+    public function store(VerificationCodeRequest $request, EasySms $easySms)
     {
-        $phone = $reques -> phone;
-        // 4位随机数
+        $phone = $request -> phone;
+        // 4位随机数 左侧补0
         $code = str_pad(random_int(1, 9999), 4, 0, STR_PAD_LEFT);
 
+        // 仅限正式环境才发送真实短信
         if (!app()->environment('production')) {
             $code = '1234';
         } else {
@@ -35,7 +36,6 @@ class VerificationCodesController extends Controller
         Cache::put($key, ['phone' => $phone, 'code' => $code], $expiredAt);
 
         return $this->response->array([
-
             'key' => $key,
             'expired_at' => $expiredAt->toDateTimeString(),
         ])->setStatusCode(201);
